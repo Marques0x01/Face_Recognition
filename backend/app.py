@@ -19,11 +19,10 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 def recognition():
     image = request.get_json(force=True) 
     database = "/Users/fabiomarques/Downloads/python/project_flask/server/images/database"
-    return getFiles(image.get("path"), database)
+    return compare_images(image.get("path"), database)
 
-def getFiles(loaded_image_path, database):
+def compare_images(loaded_image_path, database):
     for image_path in os.listdir(database):
-         # create the full input path and read the file
         input_path = os.path.join(database, image_path)
 
         face_to_rec = face_recognition.load_image_file(input_path)
@@ -42,6 +41,16 @@ def getFiles(loaded_image_path, database):
             return jsonify(os.path.join(database, image_path))
         else:
             return jsonify(False)
+
+@app.route('/images', methods=['GET'])
+def get_files():
+    database = "/Users/fabiomarques/Downloads/python/project_flask/server/images/database"
+    list_images = []
+    print(os.listdir(database))
+    for image_path in os.listdir(database):
+        print(image_path)
+        list_images.append(image_path)
+    return jsonify(json.dumps(list_images))
 
 
 if __name__ == '__main__':
