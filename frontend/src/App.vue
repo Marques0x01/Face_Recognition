@@ -1,23 +1,21 @@
 <template>
   <div id="app">
-    <Header />
-    <List />
+    <Header v-if="!$route.meta.hideHeader" />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import Dropzone from "@/components/Dropzone.vue";
-import List from "@/views/List.vue";
-import Register from "@/views/Register.vue"
-
+import Header from "@/components/Header";
 export default {
   name: "app",
   components: {
-    Header,
-    Dropzone,
-    List,
-    Register
+    Header
+  },
+  methods: {
+    testes() {
+      $router.push("/search");
+    }
   }
 };
 </script>
