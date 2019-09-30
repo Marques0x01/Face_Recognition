@@ -1,14 +1,16 @@
 <template>
   <div>
     <div v-for="(image, i) in databaseImages" :key="i">
-      <h2>{{image.name}}</h2>
-      <!-- <img :src="require(image.path)"> -->
+      <h2>{{image}}</h2>
+      <img :src="require(`@/assets/images/database/${image}`)" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+const fs = require("fs");
+
 export default {
   name: "List",
   data() {
@@ -16,19 +18,15 @@ export default {
       databaseImages: []
     };
   },
-  computed: {
-
-  },
+  computed: {},
   mounted() {
-    axios
-      .get("/images")
-      .then(res => {
-        this.databaseImages = res.data;
-        console.log(this.databaseImages);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    let vm = this;
+    fs.readdir(process.cwd() + "/src/assets/images/database", (err, files) => {
+      if (err) {
+        return console.log("Unable to scan directory: " + err);
+      }
+      vm.databaseImages = files;
+    });
   }
 };
 </script>

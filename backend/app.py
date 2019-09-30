@@ -61,7 +61,7 @@ def get_files():
 def save_file():
     image = request.get_json(force=True)
     back_path = os.getcwd() + "/images/database/" + image.get("name") + ".jpeg"
-    front_path = "../frontend/assets/images/database/" + image.get("name") + ".jpeg"
+    front_path = os.path.dirname(os.getcwd()) + "/frontend/src/assets/images/database/" + image.get("name") + ".jpeg"
     copyfile(image.get("path"), back_path)
     copyfile(image.get("path"), front_path)
     return jsonify(image)
