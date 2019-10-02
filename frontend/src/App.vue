@@ -1,16 +1,27 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <input type="file" @change="onLoadFile" />
   </div>
 </template>
 
+<script>
+export default {
+  name: "app",
+  methods: {
+    onLoadFile(ev) {
+      this.$store.dispatch('loadImage', ev.target.files[0])
+    }
+  }
+};
+</script>
+
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

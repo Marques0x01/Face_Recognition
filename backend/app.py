@@ -1,10 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from aps_python import rec_face
 import numpy as np
-import cv2
-import os
-import face_recognition
+import json, cv2, os, face_recognition
 
 
 # configuration
@@ -18,16 +15,16 @@ app.config.from_object(__name__)
 CORS(app, resources={r'/*': {'origins': '*'}})
 
 # sanity check route
-@app.route('/rec/<fileName>', methods=['POST'])
-def recognition(fileName):
-    image_path = "/Users/fabiomarques/Downloads/python/project_flask/server/images/loaded/" + fileName
-    return getFiles(image_path)
+@app.route('/recognition', methods=['POST'])
+def recognition():
+    image = request.get_json(force=True) 
+    database = "/Users/fabiomarques/Downloads/python/project_flask/server/images/database"
+    return getFiles(image.get("path"), database)
 
-def getFiles(loaded_image_path):
-    path = "/Users/fabiomarques/Downloads/python/project_flask/server/images/database"
-    for image_path in os.listdir(path):
+def getFiles(loaded_image_path, database):
+    for image_path in os.listdir(database):
          # create the full input path and read the file
-        input_path = os.path.join(path, image_path)
+        input_path = os.path.join(database, image_path)
 
         face_to_rec = face_recognition.load_image_file(input_path)
         face_to_rec_encode = face_recognition.face_encodings(face_to_rec)[0]
@@ -42,10 +39,13 @@ def getFiles(loaded_image_path):
             matches = face_recognition.compare_faces(known_face_encodings, face)
 
         if True in matches:
-            return jsonify(os.path.join(path, image_path))
+            return jsonify(os.path.join(database, image_path))
         else:
             return jsonify(False)
 
 
 if __name__ == '__main__':
     app.run()
+
+
+    
