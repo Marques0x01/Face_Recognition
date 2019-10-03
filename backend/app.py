@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import numpy as np
-import json, cv2, os, face_recognition
+import json, os, face_recognition
+from shutil import copyfile
 
 
 # configuration
@@ -18,7 +18,8 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 @app.route('/recognition', methods=['POST'])
 def recognition():
     image = request.get_json(force=True) 
-    database = "/Users/fabiomarques/Downloads/python/project_flask/server/images/database"
+    dirpath = os.getcwd()
+    database = dirpath + "/images/database"
     return compare_images(image.get("path"), database)
 
 def compare_images(loaded_image_path, database):
@@ -44,14 +45,26 @@ def compare_images(loaded_image_path, database):
 
 @app.route('/images', methods=['GET'])
 def get_files():
-    database = "/Users/fabiomarques/Downloads/python/project_flask/server/images/database"
     list_images = []
-    print(os.listdir(database))
-    for image_path in os.listdir(database):
-        print(image_path)
-        list_images.append(image_path)
-    return jsonify(json.dumps(list_images))
+    dirpath = os.getcwd()
+    database = dirpath + "/images/database"    
+    for image_file in os.listdir(database):
+        input_path = os.path.join(database, image_file)
+        image_obj = {
+            "name": image_file,
+            "path": input_path
+        }
+        list_images.append(image_obj)
+    return json.dumps(list_images)
 
+@app.route('/save-image', methods=['POST'])
+def save_file():
+    image = request.get_json(force=True)
+    back_path = os.getcwd() + "/images/database/" + image.get("name") + ".jpeg"
+    front_path = "../frontend/assets/images/database/" + image.get("name") + ".jpeg"
+    copyfile(image.get("path"), back_path)
+    copyfile(image.get("path"), front_path)
+    return jsonify(image)
 
 if __name__ == '__main__':
     app.run()
