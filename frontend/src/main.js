@@ -6,6 +6,7 @@ import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import './assets/_custom.scss'
 
 axios.defaults.baseURL = `http://localhost:5000/`
 

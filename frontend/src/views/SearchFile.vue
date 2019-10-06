@@ -1,8 +1,14 @@
 <template>
-  <div id="dropzone">
-    <div class="drop m-2">
-      <input type="file" class="input-file" @change="onLoadFile" />
-      <p>Drag your file here</p>
+  <div class="dropzone d-flex">
+    <div class="container text-center my-auto">
+      <div class="mb-4">
+        <h1 class="mb-2">Faça o carregamento de fotos para realizar a pesquisa!</h1>
+        <p>Para começar é muito facil. Carregue um arquivo de uma foto para que possamos analisar e retornamos a você o nome e a foto através do processo de reconhecimento facial.</p>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFileLang" lang="es" />
+        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+      </div>
     </div>
   </div>
 </template>
@@ -19,40 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.drop {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  cursor: pointer;
-  outline: 2px dashed rgb(255, 255, 255);
-  outline-offset: -10px;
-  background: #adadad;
-  color: rgb(255, 255, 255);
-  text-shadow: black 0.1em 0.1em 0.2em;
-  height: 89%;
-  width: 98%;
-  &:hover {
-    background: rgb(196, 196, 196);
-  }
-}
-
-.drop-light {
-  outline: 2px dashed rgb(68, 68, 68);
-  background: #e2e3e5;
-  color: #383d41;
-  text-shadow: none;
-  &:hover {
-    background: rgb(209, 209, 209);
-  }
-}
-
-.input-file {
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  cursor: pointer;
+.dropzone {
+  height: 100vh;
 }
 </style>

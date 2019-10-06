@@ -1,9 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">Navbar</a>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
-      <!-- Right aligned nav items -->
       <div class="ml-auto">
         <b-nav-form>
           <ul class="navbar-nav">
@@ -25,3 +24,14 @@
     </b-collapse>
   </nav>
 </template>
+
+<script>
+export default {};
+</script>
+
+<style lang="scss" scoped>
+.navbar {
+  background-color: #f5f8f6;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.158);
+}
+</style>
