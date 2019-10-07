@@ -6,14 +6,26 @@ body {
 }
 
 // STYLE
-.text-gray {
-  color: rgb(122, 122, 122);
+.text-green {
+  color: rgb(85, 138, 85);
 }
 .text-dark-gray {
   color: #6c757d;
 }
 .custom-file-input:lang(en) ~ .custom-file-label::after {
   content: "Procurar";
+}
+
+.custom-file-label::after {
+  background-color: rgb(85, 138, 85);
+  color: #fffeff;
+}
+
+.btn-success {
+  background-color: rgb(85, 138, 85);
+  &:hover {
+    background-color: rgb(67, 107, 67);
+  }
 }
 
 // RESPONSIVITY

@@ -1,33 +1,38 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
+const fs = require("fs");
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    image: null
+    databaseImages: []
   },
   getters: {
-    image: state => state.image 
+    databaseImages: state => state.databaseImages
   },
   mutations: {
-    'SET_IMAGE'(state, payload){
-      state.image = payload;
+    loadImages(state) {
+      fs.readdir(process.cwd() + "/src/assets/images/database", (err, files) => {
+        if (err) {
+          return console.log("Unable to scan directory: " + err);
+        }
+        state.databaseImages = files;
+      });
     }
   },
   actions: {
-    loadImage({ commit }, payload) {
+    searchImage({ }, payload) {
       let image = {
         path: payload.path
       }
-      commit('SET_IMAGE', payload)
       Axios.post('recognition', image).then((res) => {
         console.log(res);
       })
-      .catch((error) => {
-        console.error(error);
-      });
+        .catch((error) => {
+          console.error(error);
+        });
     }
   }
 })
