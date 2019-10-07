@@ -1,21 +1,116 @@
-html, body  {
+html,
+body {
   width: 100%;
   height: 100%;
   background: #fffeff;
 }
 
-@mixin for-phone-only {
-  @media (max-width: 599px) { @content; }
+// STYLE
+.text-gray {
+  color: rgb(122, 122, 122);
 }
-@mixin for-tablet-portrait-up {
-  @media (min-width: 600px) { @content; }
+.text-dark-gray {
+  color: #6c757d;
 }
-@mixin for-tablet-landscape-up {
-  @media (min-width: 900px) { @content; }
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Procurar";
 }
-@mixin for-desktop-up {
-  @media (min-width: 1200px) { @content; }
+
+// RESPONSIVITY
+@mixin for-sm-device-down {
+  @media only screen and (max-width: 600px) {
+    @content;
+  }
 }
-@mixin for-big-desktop-up {
-  @media (min-width: 1800px) { @content; }
+@mixin for-md-device-down {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin for-md-device-up {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin for-lg-device-down {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin for-lg-device-up {
+  @media only screen and (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin for-xl-device-down {
+  @media only screen and (max-width: 1200px) {
+    @content;
+  }
+}
+@mixin for-xl-device-up {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+.app-search {
+  border-right: rgb(211, 211, 211) 1px solid;
+  border-bottom: rgb(211, 211, 211) 1px solid;
+}
+
+.app-register {
+  border-bottom: rgb(211, 211, 211) 1px solid;
+}
+
+// LIST
+.list-img {
+  width: 100%;
+  height: 250px;
+  border: solid 1px rgba(0, 0, 0, 0.253);
+  border-radius: 10px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.list-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 50px;
+  column-gap: 150px;
+  justify-content: space-around;
+}
+
+.list-item {
+  border-radius: 10px;
+  border: solid 1px rgba(0, 0, 0, 0.253);
+}
+
+.list-input {
+  width: 500px;
+}
+
+@include for-lg-device-down() {
+  .list-items {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  .list-img {
+    width: 250px;
+  }
+  .list-form-group {
+    justify-content: center;
+  }
+}
+
+@include for-md-device-down() {
+  .list-form-group {
+    display: flex;
+    justify-content: center;
+  }
+  .list-input {
+    width: 250px;
+  }
+  .list-items {
+    grid-template-columns: 1fr;
+  }
 }
