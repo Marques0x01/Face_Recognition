@@ -1,5 +1,5 @@
 <template>
-  <div id="main" class="container">
+  <div id="main" class="container" v-if="!$store.state.loading">
     <div class="row mt-4">
       <div class="col-xs-12 col-md-6 app-search p-3">
         <Search />
@@ -10,6 +10,7 @@
     </div>
     <List />
   </div>
+    <b-spinner class="loading" variant="success" label="Spinning" v-else></b-spinner>
 </template>
 
 <script>

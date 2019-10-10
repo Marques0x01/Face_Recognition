@@ -41,7 +41,7 @@ def compare_images(loaded_image_path, database):
         if True in matches:
             return jsonify(image_path)
         else:
-            return jsonify(False)
+            return jsonify(None)
 
 # @app.route('/images', methods=['GET'])
 # def get_files():

@@ -9,7 +9,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     databaseImages: [],
-    resultImages: []
+    resultImages: [],
+    loading: false
   },
   getters: {
     databaseImages: state => state.databaseImages,
@@ -30,16 +31,20 @@ export default new Vuex.Store({
   },
   actions: {
     searchImage({ state }, payload) {
+      state.loading = true;
       let image = {
         path: payload.path
       }
       Axios.post('recognition', image).then((res) => {
         router.push("/result")
-        state.resultImages.push(res.data)
+        if(res.data){
+          state.resultImages.push(res.data)
+        }
       })
         .catch((error) => {
-          console.error(error);
-        });
+          console.log(error);
+        })
+        .finally(() => state.loading = false)
     }
   }
 })

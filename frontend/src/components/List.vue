@@ -13,7 +13,7 @@
     <div class="list-items" align-h="around">
       <div class="list-item" v-for="(image, i) in filteredImages" :key="i">
         <img class="list-img" :src="require(`@/assets/images/database/${image}`)" />
-        <h4 class="text-center my-2">{{image}}</h4>
+        <h4 class="text-center my-2">{{filterName(image)}}</h4>
       </div>
     </div>
   </div>
@@ -26,6 +26,11 @@ export default {
     return {
       searchName: ""
     };
+  },
+  methods: {
+    filterName(name) {
+      return name.substring(0, name.indexOf("."));
+    }
   },
   computed: {
     filteredImages() {

@@ -56,7 +56,7 @@ export default {
       if (this.file.name === "" || this.file.name === undefined || this.file.name === null) {
         return "Selecione o arquivo";
       }
-      return this.file.name;
+      return this.file.name.substring(15,0) + "..."
     }
   }
 };

@@ -28,6 +28,11 @@ body {
   }
 }
 
+.loading {
+  width: 3rem;
+  height: 3rem;
+}
+
 // RESPONSIVITY
 @mixin for-sm-device-down {
   @media only screen and (max-width: 600px) {
