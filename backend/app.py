@@ -39,23 +39,23 @@ def compare_images(loaded_image_path, database):
             matches = face_recognition.compare_faces(known_face_encodings, face)
 
         if True in matches:
-            return jsonify(os.path.join(database, image_path))
+            return jsonify(image_path)
         else:
             return jsonify(False)
 
-@app.route('/images', methods=['GET'])
-def get_files():
-    list_images = []
-    dirpath = os.getcwd()
-    database = dirpath + "/images/database"    
-    for image_file in os.listdir(database):
-        input_path = os.path.join(database, image_file)
-        image_obj = {
-            "name": image_file,
-            "path": input_path
-        }
-        list_images.append(image_obj)
-    return json.dumps(list_images)
+# @app.route('/images', methods=['GET'])
+# def get_files():
+#     list_images = []
+#     dirpath = os.getcwd()
+#     database = dirpath + "/images/database"    
+#     for image_file in os.listdir(database):
+#         input_path = os.path.join(database, image_file)
+#         image_obj = {
+#             "name": image_file,
+#             "path": input_path
+#         }
+#         list_images.append(image_obj)
+#     return json.dumps(list_images)
 
 @app.route('/save-image', methods=['POST'])
 def save_file():

@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import { mapGetters } from "@/store.js";
-
 export default {
   name: "List",
   data() {
