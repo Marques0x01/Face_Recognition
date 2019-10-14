@@ -10,7 +10,13 @@
     </div>
     <List />
   </div>
-    <b-spinner class="loading" variant="success" label="Spinning" v-else></b-spinner>
+  <div class="loading d-flex" v-else>
+    <div class="container d-flex justify-content-center my-auto">
+      <div class="spinner-border text-success" style="width: 5rem; height: 5rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
