@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="results-header p-5">
-      <h3 class="text-center mb-4">Abaixo você verá a foto e o nome da pessoa procurada</h3>
+      <h3 class="text-center mb-4">Abaixo você vera a foto e o nome da pessoa procurada.</h3>
       <div class="results-option-item">
         <p>Voltar para pagina inicial</p>
-      <router-link to="/main" tag="button" class="btn btn-success btn-sm">Clique aqui</router-link>
+      <router-link to="/main" tag="button" class="btn btn-success btn-sm">Retornar</router-link>
       </div>
     </div>
 

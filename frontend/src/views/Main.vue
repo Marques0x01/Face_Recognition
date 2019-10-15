@@ -34,4 +34,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.loading {
+  height: 100vh;
+}
+.app-search {
+  border-right: rgb(211, 211, 211) 1px solid;
+  border-bottom: rgb(211, 211, 211) 1px solid;
+}
+.app-register {
+  border-bottom: rgb(211, 211, 211) 1px solid;
+}
+
 </style>

@@ -26,19 +26,4 @@ export default {
   color: #ffffff;
   text-shadow: 1px 1px #0c0b0b;
 }
-
-@mixin for-phone-only {
-  @media (max-width: 599px) {
-    transition: 1s;
-    @content;
-  }
-}
-
-.app-landing h1 {
-  transition: 1s;
-
-  @include for-phone-only {
-    font-size: 2.5em;
-  }
-}
 </style>

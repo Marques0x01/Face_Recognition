@@ -1,5 +1,5 @@
 <template>
-  <div class="search">
+  <div class="register">
     <h4 class="text-green mb-3">Registrar</h4>
     <label for="input-file">Carregue um arquivo e adicione um nome para realizar o registro</label>
     <div class="row">
@@ -61,3 +61,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+
+.app-register {
+}
+</style>
