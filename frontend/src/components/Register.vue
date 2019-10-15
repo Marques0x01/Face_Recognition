@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="d-flex justify-content-end">
-      <button class="btn btn-success btn-sm" @click="onSaveImage()">Registrar</button>
+      <button class="btn btn-success btn-sm" @click="onSaveImage()" :disabled="fieldValidation">Registrar</button>
     </div>
   </div>
 </template>
@@ -57,13 +57,13 @@ export default {
         return "Selecione o arquivo";
       }
       return this.file.name.substring(15,0) + "..."
+    },
+    fieldValidation(){
+      return Object.entries(this.file).length == 0 || this.name === "" || this.name === undefined || this.name === null;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-
-.app-register {
-}
 </style>

@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="d-flex justify-content-end">
-      <button class="btn btn-success btn-sm" @click="onSearchFile()">Pesquisar</button>
+      <button class="btn btn-success btn-sm" @click="onSearchFile()" :disabled="Object.entries(file).length === 0">Pesquisar</button>
     </div>
   </div>
 </template>
@@ -45,6 +45,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-search {
-}
 </style>
