@@ -45,6 +45,7 @@ export default {
 .results {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 20px;
 }
 
 .results-option {
@@ -58,8 +59,6 @@ export default {
   justify-items: center;
 }
 
-.result-header {
-}
 .result-item {
   display: grid;
   grid-template-columns: 1fr;
@@ -70,5 +69,6 @@ export default {
   border-radius: 10px;
   border: solid 1px rgba(0, 0, 0, 0.253);
   width: 300px;
+  height: 300px;
 }
 </style>

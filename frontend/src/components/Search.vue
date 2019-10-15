@@ -30,6 +30,7 @@ export default {
     },
     onSearchFile(){
       this.$store.dispatch("searchImage", this.file);
+      console.log("teste");
     }
   },
   computed: {

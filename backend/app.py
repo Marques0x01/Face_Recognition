@@ -1,8 +1,8 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS
 import json, os, face_recognition
+from flask import Flask, jsonify, request, make_response
+from flask_cors import CORS
 from shutil import copyfile
-
+from json import dumps
 
 # configuration
 DEBUG = True
@@ -23,6 +23,7 @@ def recognition():
     return compare_images(image.get("path"), database)
 
 def compare_images(loaded_image_path, database):
+    matched_images = []
     for image_path in os.listdir(database):
         input_path = os.path.join(database, image_path)
 
@@ -39,9 +40,13 @@ def compare_images(loaded_image_path, database):
             matches = face_recognition.compare_faces(known_face_encodings, face)
 
         if True in matches:
-            return jsonify(image_path)
-        else:
-            return jsonify(None)
+            matched_images.append(image_path)
+
+    print(matched_images)
+    if matched_images:
+        return make_response(dumps(matched_images))
+    else:
+        return jsonify(None)
 
 # @app.route('/images', methods=['GET'])
 # def get_files():

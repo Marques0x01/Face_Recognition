@@ -36,10 +36,13 @@ export default new Vuex.Store({
         path: payload.path
       }
       Axios.post('recognition', image).then((res) => {
-        router.push("/result")
-        if(res.data){
-          state.resultImages.push(res.data)
+        if(!res.data){
+          router.push("/Error")
+          return;
         }
+        router.push("/result")
+        state.resultImages = res.data;
+
       })
         .catch((error) => {
           console.log(error);
