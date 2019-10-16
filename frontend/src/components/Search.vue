@@ -5,11 +5,11 @@
     <div class="input-group mb-3">
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="input-fle" @change="onLoadFile($event)" />
-        <label class="custom-file-label text-dark-gray" for="input-fle">{{fileName}}</label>
+        <label class="custom-file-label text-dark-gray" for="input-fle">{{fileName ? fileName : "Selectiona um Arquivo"}}</label>
       </div>
     </div>
     <div class="d-flex justify-content-end">
-      <button class="btn btn-success btn-sm" @click="onSearchFile()" :disabled="Object.entries(file).length === 0">Pesquisar</button>
+      <button class="btn btn-success btn-sm" @click="onSearchFile()" :disabled="!fileName">Pesquisar</button>
     </div>
   </div>
 </template>
@@ -30,13 +30,12 @@ export default {
     },
     onSearchFile(){
       this.$store.dispatch("searchImage", this.file);
-      console.log("teste");
     }
   },
   computed: {
     fileName() {
       if(this.name === "" || this.name === undefined || this.name === null){
-        return "Selecione o arquivo"
+        return null
       }
       return this.name
     }
