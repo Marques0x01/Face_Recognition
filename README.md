@@ -15,7 +15,7 @@ Once Node is installed, go to terminal and type:
 `$ npm install vue`
 
 ### Python
-####Mac
+#### Mac
 Install brew:
 [Brew Guide](https://brew.sh/)
 
@@ -25,7 +25,7 @@ Once Brew is installed, go to terminal and type:
 
 `$ brew install python`
 
-####Linux
+#### Linux
 Go to terminal and type:
 
 `$ sudo apt-get update`
@@ -37,7 +37,7 @@ Go to terminal and type:
 `$ sudo apt install python-pip`
 
 `$ sudo apt install python-pip3`
-####Backend
+#### Backend
 
 Installing virtualenv:
 
