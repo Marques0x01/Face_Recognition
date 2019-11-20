@@ -6,6 +6,7 @@ Download and install Node:
 
 [Download Node](https://nodejs.org/en/download/)
 
+
 ### VueJs
 
 Once Node is installed, go to terminal and type:
@@ -38,6 +39,9 @@ Go to terminal and type:
 
 `$ sudo apt install python-pip3`
 #### Backend
+
+Install CMAKE with this link:
+[Install CMAKE](https://cgold.readthedocs.io/en/latest/first-step/installation.html)
 
 Installing virtualenv:
 
