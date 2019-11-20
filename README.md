@@ -71,3 +71,6 @@ Go to the frontend folder and type in terminal:
 To run Frontend (in frontend folder):
 
 `$ npm run electron:serve`
+
+## Test
+There is a folder called "test_load" where you can test comparing with images there is already loaded in database.
