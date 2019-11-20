@@ -45,6 +45,7 @@ export default {
           this.file = {};
           this.name = ""
           alert("Saved")
+          Location.reload();
         })
         .catch(err => {
           console.log(err);
